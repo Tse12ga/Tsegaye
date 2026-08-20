@@ -334,7 +334,6 @@ export default function Home() {
   return (
     <div className="w-full bg-[#0C0C0C] overflow-x-clip text-[#D7E2EA]">
       <HeroSection />
-      <MarqueeSection />
       <AboutSection />
       <ServicesSection />
       <ProjectsSection />
