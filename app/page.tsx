@@ -226,6 +226,53 @@ const ServicesSection = () => {
   );
 };
 
+const ProjectCard = ({ proj, index, totalProjects, scrollYProgress }: any) => {
+  const targetScale = 1 - (totalProjects - 1 - index) * 0.03;
+  const start = index / totalProjects;
+  const end = (index + 1) / totalProjects;
+  
+  const scale = useTransform(scrollYProgress, [start, end], [1, targetScale]);
+  const smoothScale = useSpring(scale, { stiffness: 100, damping: 20 });
+
+  return (
+    <motion.div 
+      className="sticky top-24 md:top-32 rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-4 sm:p-6 md:p-8 flex flex-col gap-6 sm:gap-8"
+      style={{ scale: smoothScale, top: `calc(6rem + ${index * 28}px)` }}
+    >
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+        <div className="flex items-center gap-6 sm:gap-10">
+          <span className="font-black text-[#D7E2EA] text-[clamp(3rem,10vw,140px)] leading-none">{proj.id}</span>
+          <div className="flex flex-col gap-1">
+            <span className="uppercase text-[#D7E2EA] opacity-60 text-sm tracking-wider">{proj.label}</span>
+            <h3 className="uppercase text-[#D7E2EA] font-medium text-xl sm:text-2xl md:text-3xl">{proj.name}</h3>
+          </div>
+        </div>
+        {proj.liveUrl !== "#" ? (
+          <LiveProjectButton href={proj.liveUrl} />
+        ) : (
+          <span className="px-8 py-3 text-sm font-medium uppercase tracking-widest text-[#D7E2EA]/50 border-2 border-[#D7E2EA]/20 rounded-full">Internal Project</span>
+        )}
+      </div>
+      
+      <div className="flex flex-col md:flex-row gap-4 sm:gap-6 w-full">
+        {/* Left Col */}
+        <div className="w-full md:w-[40%] flex flex-col gap-4 sm:gap-6">
+          <div className="w-full h-[clamp(130px,16vw,230px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-neutral-900 border border-white/5">
+            <img src={proj.col1[0]} alt={`${proj.name} screenshot 1`} className="absolute inset-0 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" loading="lazy" />
+          </div>
+          <div className="w-full h-[clamp(160px,22vw,340px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-neutral-900 border border-white/5">
+            <img src={proj.col1[1]} alt={`${proj.name} screenshot 2`} className="absolute inset-0 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" loading="lazy" />
+          </div>
+        </div>
+        {/* Right Col */}
+        <div className="w-full md:w-[60%] h-[400px] md:h-auto relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-neutral-900 border border-white/5">
+          <img src={proj.col2} alt={`${proj.name} dashboard`} className="absolute inset-0 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" loading="lazy" />
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 const ProjectsSection = () => {
   const projects = [
     {
@@ -299,56 +346,15 @@ const ProjectsSection = () => {
       </h2>
       
       <div ref={containerRef} className="px-5 sm:px-8 md:px-10 max-w-7xl mx-auto flex flex-col gap-8 relative pb-20">
-        {projects.map((proj, i) => {
-          // targetScale = 1 - (totalCards - 1 - index) * 0.03
-          const targetScale = 1 - (projects.length - 1 - i) * 0.03;
-          // When this card hits top of viewport, its progress goes from 0 to 1
-          // We map its own scroll progress to scale down.
-          const start = i / projects.length;
-          const end = (i + 1) / projects.length;
-          
-          const scale = useTransform(scrollYProgress, [start, end], [1, targetScale]);
-          const smoothScale = useSpring(scale, { stiffness: 100, damping: 20 });
-
-          return (
-            <motion.div 
-              key={proj.id} 
-              className="sticky top-24 md:top-32 rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-4 sm:p-6 md:p-8 flex flex-col gap-6 sm:gap-8"
-              style={{ scale: smoothScale, top: `calc(6rem + ${i * 28}px)` }}
-            >
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
-                <div className="flex items-center gap-6 sm:gap-10">
-                  <span className="font-black text-[#D7E2EA] text-[clamp(3rem,10vw,140px)] leading-none">{proj.id}</span>
-                  <div className="flex flex-col gap-1">
-                    <span className="uppercase text-[#D7E2EA] opacity-60 text-sm tracking-wider">{proj.label}</span>
-                    <h3 className="uppercase text-[#D7E2EA] font-medium text-xl sm:text-2xl md:text-3xl">{proj.name}</h3>
-                  </div>
-                </div>
-                {proj.liveUrl !== "#" ? (
-                  <LiveProjectButton href={proj.liveUrl} />
-                ) : (
-                  <span className="px-8 py-3 text-sm font-medium uppercase tracking-widest text-[#D7E2EA]/50 border-2 border-[#D7E2EA]/20 rounded-full">Internal Project</span>
-                )}
-              </div>
-              
-              <div className="flex flex-col md:flex-row gap-4 sm:gap-6 w-full">
-                {/* Left Col */}
-                <div className="w-full md:w-[40%] flex flex-col gap-4 sm:gap-6">
-                  <div className="w-full h-[clamp(130px,16vw,230px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-neutral-900 border border-white/5">
-                    <img src={proj.col1[0]} alt={`${proj.name} screenshot 1`} className="absolute inset-0 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" loading="lazy" />
-                  </div>
-                  <div className="w-full h-[clamp(160px,22vw,340px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-neutral-900 border border-white/5">
-                    <img src={proj.col1[1]} alt={`${proj.name} screenshot 2`} className="absolute inset-0 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" loading="lazy" />
-                  </div>
-                </div>
-                {/* Right Col */}
-                <div className="w-full md:w-[60%] h-[400px] md:h-auto relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-neutral-900 border border-white/5">
-                  <img src={proj.col2} alt={`${proj.name} dashboard`} className="absolute inset-0 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" loading="lazy" />
-                </div>
-              </div>
-            </motion.div>
-          );
-        })}
+        {projects.map((proj, i) => (
+          <ProjectCard 
+            key={proj.id} 
+            proj={proj} 
+            index={i} 
+            totalProjects={projects.length} 
+            scrollYProgress={scrollYProgress} 
+          />
+        ))}
       </div>
     </section>
   );
