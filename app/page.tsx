@@ -192,11 +192,11 @@ const AboutSection = () => {
 
 const ServicesSection = () => {
   const services = [
-    { num: "01", name: "Web Development", desc: "Designing and building high-performance, conversion-focused websites using Next.js, React, and TypeScript." },
-    { num: "02", name: "E-commerce Solutions", desc: "Creating custom digital storefronts and robust e-commerce platforms using modern frameworks and headless architectures." },
-    { num: "03", name: "Database Architecture", desc: "Architecting and configuring secure, scalable databases using Prisma and advanced backend technologies." },
-    { num: "04", name: "Physical Infrastructure", desc: "Designing and executing complex IP CCTV architectures, including underground conduit topologies and PoE switch configurations." },
-    { num: "05", name: "IT Operations", desc: "Managing enterprise IT operations, supporting corporate hardware, maintaining local networks, and overseeing NVR/DVR systems." }
+    { num: "01", name: "IT Support", desc: "Providing comprehensive enterprise IT support, hardware maintenance, and troubleshooting to ensure seamless daily operations." },
+    { num: "02", name: "Website Development", desc: "Designing and building high-performance, responsive websites and web applications using modern technologies." },
+    { num: "03", name: "CCTV Installation", desc: "Designing and executing complex IP camera architectures and NVR/DVR security systems for properties." },
+    { num: "04", name: "Network Installation", desc: "Engineering robust physical network topologies, including conduit routing, cabling, and PoE switch configurations." },
+    { num: "05", name: "Graphics Design", desc: "Crafting striking visual identities, branding materials, and digital interfaces that communicate a clear presence." }
   ];
 
   return (
@@ -365,31 +365,52 @@ const ProjectsSection = () => {
 const ContactSection = () => {
   return (
     <section id="contact" className="bg-[#0C0C0C] pt-20 pb-10 px-5 sm:px-8 md:px-10 relative z-40 border-t border-white/10">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
-        <div className="flex flex-col gap-6">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-start gap-16">
+        <div className="flex flex-col gap-6 lg:w-1/2">
           <h2 className="hero-heading font-black uppercase tracking-tight text-[clamp(2.5rem,8vw,80px)] leading-none">
             Let&apos;s Build
           </h2>
-          <p className="text-[#F2F5F8] font-medium text-lg max-w-md opacity-80">
-            Whether you need a high-performance web application or a rock-solid physical network topology, I am ready to engineer it.
+          <p className="text-[#F2F5F8] font-medium text-lg max-w-md opacity-80 mb-4">
+            Whether you need a high-performance website, custom graphics, or a rock-solid network topology, I am ready to engineer it. Send me a message!
           </p>
+          
+          <div className="flex flex-col gap-4 text-[#D7E2EA]">
+            <a href="mailto:tsegashu@gmail.com" className="text-xl sm:text-2xl font-medium hover:text-white transition-colors flex items-center gap-3">
+              tsegashu@gmail.com
+            </a>
+            <a href="tel:+251947626212" className="text-xl sm:text-2xl font-medium hover:text-white transition-colors flex items-center gap-3">
+              +251 947 626 212
+            </a>
+            <div className="flex gap-6 mt-4">
+              <a href="https://github.com/Tse12ga" target="_blank" rel="noopener noreferrer" className="text-sm font-medium uppercase tracking-widest hover:text-white transition-colors border-b border-[#D7E2EA]/30 pb-1">
+                GitHub
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer" className="text-sm font-medium uppercase tracking-widest hover:text-white transition-colors border-b border-[#D7E2EA]/30 pb-1">
+                LinkedIn
+              </a>
+            </div>
+          </div>
         </div>
         
-        <div className="flex flex-col gap-4 text-[#D7E2EA]">
-          <a href="mailto:tsegashu@gmail.com" className="text-xl sm:text-2xl font-medium hover:text-white transition-colors flex items-center gap-3">
-            tsegashu@gmail.com
-          </a>
-          <a href="tel:+251947626212" className="text-xl sm:text-2xl font-medium hover:text-white transition-colors flex items-center gap-3">
-            +251 947 626 212
-          </a>
-          <div className="flex gap-6 mt-4">
-            <a href="https://github.com/Tse12ga" target="_blank" rel="noopener noreferrer" className="text-sm font-medium uppercase tracking-widest hover:text-white transition-colors border-b border-[#D7E2EA]/30 pb-1">
-              GitHub
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" className="text-sm font-medium uppercase tracking-widest hover:text-white transition-colors border-b border-[#D7E2EA]/30 pb-1">
-              LinkedIn
-            </a>
-          </div>
+        {/* Contact Form */}
+        <div className="w-full lg:w-1/2 bg-neutral-900/50 p-6 sm:p-8 md:p-10 rounded-[30px] border border-white/10">
+          <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="name" className="text-[#D7E2EA] text-sm font-medium uppercase tracking-wider">Your Name</label>
+              <input type="text" id="name" placeholder="John Doe" className="bg-[#0C0C0C] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-white/30 transition-colors" />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="email" className="text-[#D7E2EA] text-sm font-medium uppercase tracking-wider">Email Address</label>
+              <input type="email" id="email" placeholder="john@example.com" className="bg-[#0C0C0C] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-white/30 transition-colors" />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="message" className="text-[#D7E2EA] text-sm font-medium uppercase tracking-wider">Project Details</label>
+              <textarea id="message" rows={4} placeholder="Tell me about your project..." className="bg-[#0C0C0C] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-white/30 transition-colors resize-none"></textarea>
+            </div>
+            <button type="submit" className="mt-2 rounded-xl bg-[#D7E2EA] text-[#0C0C0C] font-black uppercase tracking-widest py-4 hover:bg-white transition-colors shadow-[0_0_20px_rgba(215,226,234,0.3)]">
+              Send Message
+            </button>
+          </form>
         </div>
       </div>
       
