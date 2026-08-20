@@ -164,7 +164,7 @@ const HeroSection = () => {
 
 const AboutSection = () => {
   return (
-    <section id="about" className="relative min-h-screen flex flex-col justify-center items-center px-5 sm:px-8 md:px-10 py-32 md:py-48 overflow-hidden bg-[#0C0C0C]">
+    <section id="about" className="relative min-h-screen flex flex-col justify-center items-center px-5 sm:px-8 md:px-10 py-32 md:py-48 overflow-hidden bg-transparent">
       <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-16 z-10 w-full max-w-5xl mx-auto">
         <FadeIn delay={0} y={40}>
           <h2 className="hero-heading font-serif font-medium uppercase leading-none tracking-tight text-center text-[clamp(3rem,12vw,160px)]">
@@ -228,22 +228,22 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="bg-white rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 py-32 sm:py-40 md:py-48 relative z-20">
-      <h2 className="text-[#0C0C0C] font-serif font-light uppercase text-center text-[clamp(3rem,12vw,160px)] mb-16 sm:mb-20 md:mb-28 leading-none">
+    <section id="services" className="bg-[#030303]/40 backdrop-blur-3xl rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 py-32 sm:py-40 md:py-48 relative z-20 border-t border-white/10 shadow-[0_-30px_50px_rgba(0,0,0,0.5)]">
+      <h2 className="hero-heading font-serif font-light uppercase text-center text-[clamp(3rem,12vw,160px)] mb-16 sm:mb-20 md:mb-28 leading-none">
         Services
       </h2>
       
       <div className="max-w-5xl mx-auto flex flex-col">
         {services.map((srv, i) => (
-          <FadeIn key={srv.num} delay={i * 0.1} className="flex flex-col md:flex-row items-start md:items-center py-8 sm:py-10 md:py-12 border-b border-[rgba(12,12,12,0.15)] last:border-0 gap-6 md:gap-12">
-            <span className="font-serif font-light text-[#0C0C0C] text-[clamp(3rem,10vw,140px)] leading-none">
+          <FadeIn key={srv.num} delay={i * 0.1} className="flex flex-col md:flex-row items-start md:items-center py-10 sm:py-12 md:py-16 border-b border-white/10 last:border-0 gap-6 md:gap-16 hover:bg-white/[0.02] transition-colors duration-500 rounded-3xl px-6 sm:px-10 -mx-6 sm:-mx-10">
+            <span className="font-serif font-light text-white/90 text-[clamp(3rem,10vw,140px)] leading-none w-24 sm:w-32 md:w-48">
               {srv.num}
             </span>
-            <div className="flex flex-col gap-2">
-              <h3 className="font-medium uppercase text-[#0C0C0C] text-[clamp(1rem,2.2vw,2.1rem)]">
+            <div className="flex flex-col gap-4">
+              <h3 className="font-sans font-light uppercase text-white/90 text-[clamp(1.2rem,2.2vw,2.1rem)] tracking-[0.2em]">
                 {srv.name}
               </h3>
-              <p className="font-light leading-relaxed max-w-2xl text-[clamp(0.85rem,1.6vw,1.25rem)] text-[#0C0C0C] opacity-60">
+              <p className="font-sans font-light leading-loose max-w-2xl text-[clamp(0.9rem,1.3vw,1.1rem)] text-white/60">
                 {srv.desc}
               </p>
             </div>
@@ -370,7 +370,7 @@ const ProjectsSection = () => {
   });
 
   return (
-    <section id="projects" className="bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 relative z-30 pt-32 sm:pt-40 md:pt-48 pb-48">
+    <section id="projects" className="bg-transparent rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 relative z-30 pt-32 sm:pt-40 md:pt-48 pb-48">
       <h2 className="hero-heading font-serif font-medium uppercase text-center text-[clamp(3rem,12vw,160px)] mb-16 sm:mb-20 leading-none">
         Projects
       </h2>
@@ -392,7 +392,7 @@ const ProjectsSection = () => {
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="bg-[#0C0C0C] pt-32 pb-16 px-5 sm:px-8 md:px-10 relative z-40 border-t border-white/10">
+    <section id="contact" className="bg-transparent backdrop-blur-3xl pt-32 pb-16 px-5 sm:px-8 md:px-10 relative z-40 border-t border-white/10">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-start gap-16">
         <div className="flex flex-col gap-6 lg:w-1/2">
           <h2 className="hero-heading font-serif font-medium uppercase tracking-tight text-[clamp(2.5rem,8vw,80px)] leading-none">
@@ -449,7 +449,7 @@ const ContactSection = () => {
 
 export default function Home() {
   return (
-    <div className="w-full bg-[#0C0C0C] overflow-x-clip text-[#D7E2EA]">
+    <div className="w-full bg-transparent overflow-x-clip text-[#D7E2EA]">
       <HeroSection />
       <AboutSection />
       <ServicesSection />
