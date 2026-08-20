@@ -379,13 +379,7 @@ const ProjectsSection = () => {
     }
   ];
 
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["start start", "end end"]
-  });
-  
-  const x = useTransform(scrollYProgress, [0, 1], ["5%", "-85%"]);
+
 
   return (
     <section id="projects" ref={targetRef} className="relative z-30 h-[500vh] bg-transparent border-t border-white/10">
