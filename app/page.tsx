@@ -280,56 +280,56 @@ const ProjectsSection = () => {
       name: "Gollagul Trading",
       label: "E-Commerce",
       liveUrl: "https://gollagul.com",
-      col1: ["/Gollagul/Gollagul 1.jpeg", "/Gollagul/Gollagul 2.jpeg"],
-      col2: "/Gollagul/Gollagul 3.jpeg"
+      col1: ["/Gollagul/Gollagul 2.jpeg", "/Gollagul/Gollagul 3.jpeg"],
+      col2: "/Gollagul/Gollagul 1.jpeg"
     },
     {
       id: "02",
       name: "Debredamo Hotel",
       label: "Hospitality",
       liveUrl: "https://debredamohotel.com",
-      col1: ["/Debredamo/DDH 1.jpeg", "/Debredamo/DDH 3.jpeg"],
-      col2: "/Debredamo/DDH 4.jpeg"
+      col1: ["/Debredamo/DDH 3.jpeg", "/Debredamo/DDH 4.jpeg"],
+      col2: "/Debredamo/DDH 1.jpeg"
     },
     {
       id: "03",
       name: "Gullit",
       label: "E-commerce",
       liveUrl: "https://gullit.net",
-      col1: ["/Gullit/gullit 1.jpeg", "/Gullit/Gullit 2.jpeg"],
-      col2: "/Gullit/Gullit 3.jpeg"
+      col1: ["/Gullit/Gullit 2.jpeg", "/Gullit/Gullit 3.jpeg"],
+      col2: "/Gullit/gullit 1.jpeg"
     },
     {
       id: "04",
       name: "Properties in Addis",
       label: "Real Estate",
       liveUrl: "https://propertiesinaddis.com",
-      col1: ["/Propertiesinaddis/PIA 1.jpeg", "/Propertiesinaddis/PIA 2.jpeg"],
-      col2: "/Propertiesinaddis/PIA 3.jpeg"
+      col1: ["/Propertiesinaddis/PIA 2.jpeg", "/Propertiesinaddis/PIA 3.jpeg"],
+      col2: "/Propertiesinaddis/PIA 1.jpeg"
     },
     {
       id: "05",
       name: "Hexagon Systems",
       label: "Corporate",
       liveUrl: "https://hexagonview.com",
-      col1: ["/Hexagon Computer Systems/Hexagon 1.jpeg", "/Hexagon Computer Systems/Hexagon 2.jpeg"],
-      col2: "/Hexagon Computer Systems/Hexagon 3.jpeg"
+      col1: ["/Hexagon Computer Systems/Hexagon 2.jpeg", "/Hexagon Computer Systems/Hexagon 3.jpeg"],
+      col2: "/Hexagon Computer Systems/Hexagon 1.jpeg"
     },
     {
       id: "06",
       name: "Amibara Security",
       label: "Infrastructure",
       liveUrl: "#",
-      col1: ["/Amibara/6024023500924241636.jpg", "/Amibara/IMG_20260328_223803_554.JPG"],
-      col2: "/Amibara/6048664174977992546.jpg"
+      col1: ["/Amibara/IMG_20260328_223803_554.JPG", "/Amibara/6048664174977992546.jpg"],
+      col2: "/Amibara/6024023500924241636.jpg"
     },
     {
       id: "07",
       name: "IT Operations",
       label: "Enterprise IT",
       liveUrl: "#",
-      col1: ["/IT Support/IMG_20260205_144326_780.jpg", "/IT Support/shared image (2).jpg"],
-      col2: "/IT Support/shared image (3).jpg"
+      col1: ["/IT Support/shared image (2).jpg", "/IT Support/shared image (3).jpg"],
+      col2: "/IT Support/IMG_20260205_144326_780.jpg"
     }
   ];
 
