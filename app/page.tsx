@@ -66,25 +66,31 @@ const FadeIn = ({ children, delay = 0, duration = 0.7, x = 0, y = 30, className 
   );
 };
 
-const ContactButton = () => {
+const ContactButton = ({ href = "#contact", className = "" }: { href?: string; className?: string }) => {
   return (
-    <button
-      className="rounded-full px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base text-white font-medium uppercase tracking-widest outline outline-2 outline-offset-[-3px] outline-white hover:scale-105 transition-transform"
+    <a
+      href={href}
+      className={`inline-block rounded-full px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base text-white font-medium uppercase tracking-widest outline outline-2 outline-offset-[-3px] outline-white hover:scale-105 transition-transform ${className}`}
       style={{
         background: "linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%)",
         boxShadow: "0px 4px 4px rgba(181, 1, 167, 0.25), inset 4px 4px 12px #7721B1",
       }}
     >
       Contact Me
-    </button>
+    </a>
   );
 };
 
-const LiveProjectButton = () => {
+const LiveProjectButton = ({ href }: { href: string }) => {
   return (
-    <button className="rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 text-sm sm:text-base hover:bg-[#D7E2EA]/10 transition-colors">
+    <a 
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 text-sm sm:text-base hover:bg-[#D7E2EA]/10 transition-colors"
+    >
       Live Project
-    </button>
+    </a>
   );
 };
 
@@ -225,42 +231,42 @@ const ProjectsSection = () => {
     {
       id: "01",
       name: "Gollagul Trading",
-      label: "Client",
-      col1: [
-        "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
-        "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=800&h=800"
-      ],
-      col2: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1280"
+      label: "E-Commerce",
+      liveUrl: "https://gollagul.com",
+      col1: ["", ""],
+      col2: ""
     },
     {
       id: "02",
       name: "Debredamo Hotel",
-      label: "Client",
-      col1: [
-        "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
-        "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=800&h=800"
-      ],
-      col2: "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1280"
+      label: "Hospitality",
+      liveUrl: "https://debredamohotel.com",
+      col1: ["", ""],
+      col2: ""
     },
     {
       id: "03",
       name: "Gullit",
       label: "E-commerce",
-      col1: [
-        "https://images.pexels.com/photos/1660030/pexels-photo-1660030.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
-        "https://images.pexels.com/photos/1660030/pexels-photo-1660030.jpeg?auto=compress&cs=tinysrgb&w=800&h=800"
-      ],
-      col2: "https://images.pexels.com/photos/1660030/pexels-photo-1660030.jpeg?auto=compress&cs=tinysrgb&w=1280"
+      liveUrl: "https://gullit.net",
+      col1: ["", ""],
+      col2: ""
     },
     {
       id: "04",
-      name: "Amibara Security",
-      label: "Infrastructure",
-      col1: [
-        "https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
-        "https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=800&h=800"
-      ],
-      col2: "https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=1280"
+      name: "Properties in Addis",
+      label: "Real Estate",
+      liveUrl: "https://propertiesinaddis.com",
+      col1: ["", ""],
+      col2: ""
+    },
+    {
+      id: "05",
+      name: "Hexagon Systems",
+      label: "Corporate",
+      liveUrl: "https://hexagonview.com",
+      col1: ["", ""],
+      col2: ""
     }
   ];
 
@@ -304,7 +310,7 @@ const ProjectsSection = () => {
                     <h3 className="uppercase text-[#D7E2EA] font-medium text-xl sm:text-2xl md:text-3xl">{proj.name}</h3>
                   </div>
                 </div>
-                <LiveProjectButton />
+                <LiveProjectButton href={proj.liveUrl} />
               </div>
               
               <div className="flex flex-col md:flex-row gap-4 sm:gap-6 w-full">
@@ -330,6 +336,45 @@ const ProjectsSection = () => {
   );
 };
 
+const ContactSection = () => {
+  return (
+    <section id="contact" className="bg-[#0C0C0C] pt-20 pb-10 px-5 sm:px-8 md:px-10 relative z-40 border-t border-white/10">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
+        <div className="flex flex-col gap-6">
+          <h2 className="hero-heading font-black uppercase tracking-tight text-[clamp(2.5rem,8vw,80px)] leading-none">
+            Let&apos;s Build
+          </h2>
+          <p className="text-[#F2F5F8] font-medium text-lg max-w-md opacity-80">
+            Whether you need a high-performance web application or a rock-solid physical network topology, I am ready to engineer it.
+          </p>
+        </div>
+        
+        <div className="flex flex-col gap-4 text-[#D7E2EA]">
+          <a href="mailto:tsegashu@gmail.com" className="text-xl sm:text-2xl font-medium hover:text-white transition-colors flex items-center gap-3">
+            tsegashu@gmail.com
+          </a>
+          <a href="tel:+251947626212" className="text-xl sm:text-2xl font-medium hover:text-white transition-colors flex items-center gap-3">
+            +251 947 626 212
+          </a>
+          <div className="flex gap-6 mt-4">
+            <a href="https://github.com/Tse12ga" target="_blank" rel="noopener noreferrer" className="text-sm font-medium uppercase tracking-widest hover:text-white transition-colors border-b border-[#D7E2EA]/30 pb-1">
+              GitHub
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" className="text-sm font-medium uppercase tracking-widest hover:text-white transition-colors border-b border-[#D7E2EA]/30 pb-1">
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/10 flex justify-between items-center text-[#D7E2EA]/50 text-sm font-medium">
+        <span>© {new Date().getFullYear()} Tsegaye Shumet. All rights reserved.</span>
+        <span className="uppercase tracking-wider">Addis Ababa, Ethiopia</span>
+      </div>
+    </section>
+  );
+};
+
 export default function Home() {
   return (
     <div className="w-full bg-[#0C0C0C] overflow-x-clip text-[#D7E2EA]">
@@ -337,6 +382,7 @@ export default function Home() {
       <AboutSection />
       <ServicesSection />
       <ProjectsSection />
+      <ContactSection />
     </div>
   );
 }
