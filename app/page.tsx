@@ -280,7 +280,7 @@ const ProjectsSection = () => {
     {
       id: "01",
       name: "Gollagul Trading",
-      label: "E-Commerce",
+      label: "Corporate",
       liveUrl: "https://gollagul.com",
       col1: ["/Gollagul/Gollagul 2.jpeg", "/Gollagul/Gollagul 3.jpeg"],
       col2: "/Gollagul/Gollagul 1.jpeg"
@@ -384,9 +384,6 @@ const ContactSection = () => {
             <div className="flex gap-6 mt-4">
               <a href="https://github.com/Tse12ga" target="_blank" rel="noopener noreferrer" className="text-sm font-medium uppercase tracking-widest hover:text-white transition-colors border-b border-[#D7E2EA]/30 pb-1">
                 GitHub
-              </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" className="text-sm font-medium uppercase tracking-widest hover:text-white transition-colors border-b border-[#D7E2EA]/30 pb-1">
-                LinkedIn
               </a>
             </div>
           </div>
