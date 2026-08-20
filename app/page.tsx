@@ -70,7 +70,7 @@ const ContactButton = ({ href = "#contact", className = "" }: { href?: string; c
   return (
     <a
       href={href}
-      className={`inline-block rounded-full px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base text-white font-medium uppercase tracking-widest border border-white/20 hover:bg-white hover:text-black transition-colors ${className}`}
+      className={`inline-block rounded-full px-10 py-4 text-xs sm:text-sm text-white font-sans font-light uppercase tracking-[0.2em] border border-white/20 hover:bg-white hover:text-black transition-all duration-500 ease-out ${className}`}
     >
       Contact Me
     </a>
@@ -83,7 +83,7 @@ const LiveProjectButton = ({ href }: { href: string }) => {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-block rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 text-sm sm:text-base hover:bg-[#D7E2EA]/10 transition-colors"
+      className="inline-block rounded-full border border-white/20 text-[#D7E2EA] font-sans font-light uppercase tracking-[0.2em] px-8 py-3 text-xs hover:bg-white hover:text-black transition-all duration-500 ease-out"
     >
       Live Project
     </a>
@@ -136,11 +136,11 @@ const HeroSection = () => {
       </FadeIn>
 
       {/* Hero Heading */}
-      <div className="flex-1 flex flex-col justify-center items-center w-full relative z-20">
+      <div className="flex-1 flex flex-col justify-center items-center w-full relative z-20 px-4">
         <div className="overflow-hidden w-full text-center mt-6 sm:mt-4 md:-mt-5">
           <FadeIn delay={0.15} y={40} className="w-full">
-            <h1 className="hero-heading font-serif font-medium uppercase tracking-tight leading-none whitespace-nowrap w-full text-[12vw] sm:text-[13vw] md:text-[14vw] lg:text-[15.5vw]">
-              Hi, i&apos;m Tsegaye
+            <h1 className="hero-heading font-serif font-medium uppercase tracking-tight leading-none whitespace-nowrap w-full text-[clamp(2.5rem,10.5vw,180px)]">
+              Hi, I&apos;m Tsegaye
             </h1>
           </FadeIn>
         </div>
@@ -173,7 +173,7 @@ const AboutSection = () => {
         </FadeIn>
         
         <FadeIn delay={0.2} y={30}>
-          <p className="text-[#F2F5F8] font-medium leading-relaxed text-[clamp(1.1rem,2vw,1.5rem)] text-center max-w-4xl mx-auto">
+          <p className="text-white/80 font-sans font-light leading-loose text-[clamp(1.1rem,2vw,1.4rem)] text-center max-w-4xl mx-auto">
             I am a Computer Science graduate with over three years of hands-on experience managing enterprise IT operations. Most developers only know what happens on the screen. I know how the data actually travels through the building. Whether I am coding a Next.js frontend, configuring a Prisma database, or running underground conduit for a complex IP camera network, my focus is always the same: building systems that are fast, secure, and reliable.
           </p>
         </FadeIn>
@@ -390,7 +390,7 @@ const ContactSection = () => {
           <h2 className="hero-heading font-serif font-medium uppercase tracking-tight text-[clamp(2.5rem,8vw,80px)] leading-none">
             Let&apos;s Build
           </h2>
-          <p className="text-[#F2F5F8] font-medium text-lg max-w-md opacity-80 mb-4">
+          <p className="text-white/80 font-sans font-light leading-loose text-[clamp(1rem,1.5vw,1.25rem)] max-w-md mb-4">
             Whether you need a high-performance website, custom graphics, or a rock-solid network topology, I am ready to engineer it. Send me a message!
           </p>
           
