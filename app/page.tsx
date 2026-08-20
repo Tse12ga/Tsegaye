@@ -179,23 +179,31 @@ const AboutSection = () => {
         </FadeIn>
 
         {/* Tech Stack Grid */}
-        <FadeIn delay={0.4} y={30} className="w-full mt-8">
-          <div className="flex flex-col md:flex-row gap-6 md:gap-10 w-full">
+        <FadeIn delay={0.4} y={30} className="w-full mt-12 sm:mt-16">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-12 w-full">
             {/* Software */}
-            <div className="flex-1 bg-neutral-900/50 border border-white/10 rounded-[30px] p-8 sm:p-10 flex flex-col gap-6">
-              <h3 className="text-[#D7E2EA] font-serif font-light uppercase tracking-widest border-b border-white/10 pb-4">Web Engineering</h3>
-              <div className="flex flex-wrap gap-3">
+            <div className="flex-1 bg-gradient-to-b from-white/[0.03] to-transparent border border-white/5 backdrop-blur-xl rounded-[40px] p-8 sm:p-12 flex flex-col gap-8 shadow-2xl">
+              <h3 className="text-white/90 font-serif font-light uppercase tracking-[0.2em] border-b border-white/10 pb-6 text-sm sm:text-base">
+                Web Engineering
+              </h3>
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {["Next.js", "React", "TypeScript", "Tailwind CSS", "Prisma", "Node.js", "PostgreSQL", "Framer Motion"].map(tech => (
-                  <span key={tech} className="px-4 py-2 border border-white/20 rounded-full text-sm font-medium text-white/80">{tech}</span>
+                  <span key={tech} className="px-5 py-2.5 bg-white/[0.02] border border-white/10 rounded-full text-xs font-sans font-light text-white/70 uppercase tracking-wider">
+                    {tech}
+                  </span>
                 ))}
               </div>
             </div>
             {/* Hardware */}
-            <div className="flex-1 bg-neutral-900/50 border border-white/10 rounded-[30px] p-8 sm:p-10 flex flex-col gap-6">
-              <h3 className="text-[#D7E2EA] font-serif font-light uppercase tracking-widest border-b border-white/10 pb-4">Infrastructure & Security</h3>
-              <div className="flex flex-wrap gap-3">
+            <div className="flex-1 bg-gradient-to-b from-white/[0.03] to-transparent border border-white/5 backdrop-blur-xl rounded-[40px] p-8 sm:p-12 flex flex-col gap-8 shadow-2xl">
+              <h3 className="text-white/90 font-serif font-light uppercase tracking-[0.2em] border-b border-white/10 pb-6 text-sm sm:text-base">
+                Infrastructure & Security
+              </h3>
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {["CCTV IP/Analog", "NVR/DVR Systems", "PoE Switches", "Cat6 Structured Cabling", "Local Area Networks", "Windows Server", "Hardware Diagnostics"].map(tech => (
-                  <span key={tech} className="px-4 py-2 border border-white/20 rounded-full text-sm font-medium text-white/80">{tech}</span>
+                  <span key={tech} className="px-5 py-2.5 bg-white/[0.02] border border-white/10 rounded-full text-xs font-sans font-light text-white/70 uppercase tracking-wider">
+                    {tech}
+                  </span>
                 ))}
               </div>
             </div>
@@ -246,52 +254,52 @@ const ServicesSection = () => {
   );
 };
 
-const ProjectCard = ({ proj, index, totalProjects, scrollYProgress }: any) => {
-  const targetScale = 1 - (totalProjects - 1 - index) * 0.03;
-  const start = index / totalProjects;
-  const end = (index + 1) / totalProjects;
-  
-  const scale = useTransform(scrollYProgress, [start, end], [1, targetScale]);
-  const smoothScale = useSpring(scale, { stiffness: 100, damping: 20 });
-
+const ProjectCard = ({ proj, index }: any) => {
   return (
-    <motion.div 
-      className="sticky top-24 md:top-32 rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-4 sm:p-6 md:p-8 flex flex-col gap-6 sm:gap-8"
-      style={{ scale: smoothScale, top: `calc(6rem + ${index * 28}px)` }}
+    <div 
+      className="sticky w-full will-change-transform"
+      style={{ top: `calc(10vh + ${index * 20}px)` }}
     >
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
-        <div className="flex items-center gap-6 sm:gap-10">
-          <span className="font-serif font-light text-[#D7E2EA] text-[clamp(3rem,10vw,140px)] leading-none">{proj.id}</span>
-          <div className="flex flex-col gap-1">
-            <span className="uppercase text-[#D7E2EA] opacity-60 text-sm tracking-wider">{proj.label}</span>
-            <h3 className="uppercase text-[#D7E2EA] font-medium text-xl sm:text-2xl md:text-3xl">{proj.name}</h3>
+      <div className="w-full flex flex-col gap-8 sm:gap-12 bg-[#050505] border border-white/10 rounded-[40px] sm:rounded-[50px] md:rounded-[60px] p-6 sm:p-10 md:p-14 shadow-[0_-20px_40px_rgba(0,0,0,0.5)]">
+        
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+          <div className="flex items-center gap-6 sm:gap-10">
+            <span className="font-serif font-light text-[#D7E2EA] text-[clamp(3rem,10vw,140px)] leading-none">{proj.id}</span>
+            <div className="flex flex-col gap-1">
+              <span className="uppercase text-[#D7E2EA] opacity-60 text-sm tracking-wider">{proj.label}</span>
+              <h3 className="uppercase text-[#D7E2EA] font-medium text-xl sm:text-2xl md:text-3xl">{proj.name}</h3>
+            </div>
+          </div>
+          
+          {proj.liveUrl !== "#" ? (
+            <LiveProjectButton href={proj.liveUrl} />
+          ) : (
+            <span className="inline-block rounded-full border border-white/10 text-white/40 font-sans font-light uppercase tracking-[0.2em] px-8 py-3 text-xs bg-white/5">
+              Internal Project
+            </span>
+          )}
+        </div>
+        
+        <div className="flex flex-col md:flex-row gap-4 sm:gap-6 w-full">
+          {/* Left Col */}
+          <div className="w-full md:w-[40%] flex flex-col gap-4 sm:gap-6 shrink-0">
+            <div className="w-full h-[clamp(130px,16vw,230px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-y-auto hide-scrollbar bg-neutral-900 border border-white/5">
+              <img src={proj.col1[0]} alt={`${proj.name} screenshot 1`} className="w-full h-auto block opacity-80 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700 ease-in-out" loading="lazy" />
+            </div>
+            <div className="w-full h-[clamp(160px,22vw,340px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-y-auto hide-scrollbar bg-neutral-900 border border-white/5">
+              <img src={proj.col1[1]} alt={`${proj.name} screenshot 2`} className="w-full h-auto block opacity-80 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700 ease-in-out" loading="lazy" />
+            </div>
+          </div>
+          {/* Right Col */}
+          <div className="w-full md:w-[60%] h-[400px] md:h-auto relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden">
+            <div className="absolute inset-0 overflow-y-auto hide-scrollbar bg-neutral-900 border border-white/5 rounded-[40px] sm:rounded-[50px] md:rounded-[60px]">
+              <img src={proj.col2} alt={`${proj.name} dashboard`} className="w-full h-auto block opacity-80 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700 ease-in-out" loading="lazy" />
+            </div>
           </div>
         </div>
-        {proj.liveUrl !== "#" ? (
-          <LiveProjectButton href={proj.liveUrl} />
-        ) : (
-          <span className="px-8 py-3 text-sm font-medium uppercase tracking-widest text-[#D7E2EA]/50 border-2 border-[#D7E2EA]/20 rounded-full">Internal Project</span>
-        )}
+
       </div>
-      
-      <div className="flex flex-col md:flex-row gap-4 sm:gap-6 w-full">
-        {/* Left Col */}
-        <div className="w-full md:w-[40%] flex flex-col gap-4 sm:gap-6 shrink-0">
-          <div className="w-full h-[clamp(130px,16vw,230px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-y-auto hide-scrollbar bg-neutral-900 border border-white/5">
-            <img src={proj.col1[0]} alt={`${proj.name} screenshot 1`} className="w-full h-auto block opacity-80 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700 ease-in-out" loading="lazy" />
-          </div>
-          <div className="w-full h-[clamp(160px,22vw,340px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-y-auto hide-scrollbar bg-neutral-900 border border-white/5">
-            <img src={proj.col1[1]} alt={`${proj.name} screenshot 2`} className="w-full h-auto block opacity-80 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700 ease-in-out" loading="lazy" />
-          </div>
-        </div>
-        {/* Right Col */}
-        <div className="w-full md:w-[60%] h-[400px] md:h-auto relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden">
-          <div className="absolute inset-0 overflow-y-auto hide-scrollbar bg-neutral-900 border border-white/5 rounded-[40px] sm:rounded-[50px] md:rounded-[60px]">
-            <img src={proj.col2} alt={`${proj.name} dashboard`} className="w-full h-auto block opacity-80 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700 ease-in-out" loading="lazy" />
-          </div>
-        </div>
-      </div>
-    </motion.div>
+    </div>
   );
 };
 
