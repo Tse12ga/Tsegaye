@@ -169,7 +169,7 @@ const HeroSection = () => {
 const AboutSection = () => {
   return (
     <section id="about" className="relative min-h-screen flex flex-col justify-center items-center px-5 sm:px-8 md:px-10 py-20 overflow-hidden bg-[#0C0C0C]">
-      <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-16 z-10 w-full max-w-4xl mx-auto">
+      <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-16 z-10 w-full max-w-5xl mx-auto">
         <FadeIn delay={0} y={40}>
           <h2 className="hero-heading font-black uppercase leading-none tracking-tight text-center text-[clamp(3rem,12vw,160px)]">
             About me
@@ -177,12 +177,36 @@ const AboutSection = () => {
         </FadeIn>
         
         <FadeIn delay={0.2} y={30}>
-          <p className="text-[#F2F5F8] font-medium leading-relaxed text-[clamp(1.1rem,2vw,1.5rem)] text-center">
+          <p className="text-[#F2F5F8] font-medium leading-relaxed text-[clamp(1.1rem,2vw,1.5rem)] text-center max-w-4xl mx-auto">
             I am a Computer Science graduate with over three years of hands-on experience managing enterprise IT operations. Most developers only know what happens on the screen. I know how the data actually travels through the building. Whether I am coding a Next.js frontend, configuring a Prisma database, or running underground conduit for a complex IP camera network, my focus is always the same: building systems that are fast, secure, and reliable.
           </p>
         </FadeIn>
+
+        {/* Tech Stack Grid */}
+        <FadeIn delay={0.4} y={30} className="w-full mt-8">
+          <div className="flex flex-col md:flex-row gap-6 md:gap-10 w-full">
+            {/* Software */}
+            <div className="flex-1 bg-neutral-900/50 border border-white/10 rounded-[30px] p-8 sm:p-10 flex flex-col gap-6">
+              <h3 className="text-[#D7E2EA] font-black uppercase tracking-widest border-b border-white/10 pb-4">Web Engineering</h3>
+              <div className="flex flex-wrap gap-3">
+                {["Next.js", "React", "TypeScript", "Tailwind CSS", "Prisma", "Node.js", "PostgreSQL", "Framer Motion"].map(tech => (
+                  <span key={tech} className="px-4 py-2 border border-white/20 rounded-full text-sm font-medium text-white/80">{tech}</span>
+                ))}
+              </div>
+            </div>
+            {/* Hardware */}
+            <div className="flex-1 bg-neutral-900/50 border border-white/10 rounded-[30px] p-8 sm:p-10 flex flex-col gap-6">
+              <h3 className="text-[#D7E2EA] font-black uppercase tracking-widest border-b border-white/10 pb-4">Infrastructure & Security</h3>
+              <div className="flex flex-wrap gap-3">
+                {["CCTV IP/Analog", "NVR/DVR Systems", "PoE Switches", "Cat6 Structured Cabling", "Local Area Networks", "Windows Server", "Hardware Diagnostics"].map(tech => (
+                  <span key={tech} className="px-4 py-2 border border-white/20 rounded-full text-sm font-medium text-white/80">{tech}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </FadeIn>
         
-        <FadeIn delay={0.4} y={30} className="mt-6 sm:mt-6 md:mt-8">
+        <FadeIn delay={0.6} y={30} className="mt-4 sm:mt-6">
           <ContactButton />
         </FadeIn>
       </div>
