@@ -74,7 +74,7 @@ const ContactButton = ({ href = "#contact", className = "" }: { href?: string; c
       className={`inline-block rounded-full px-10 py-4 text-xs sm:text-sm text-white font-sans font-light uppercase tracking-[0.2em] border border-white/20 hover:bg-white hover:text-black transition-all duration-500 ease-out ${className}`}
     >
       Contact Me
-    </a>
+    
   );
 };
 
@@ -87,7 +87,7 @@ const LiveProjectButton = ({ href }: { href: string }) => {
       className="inline-block rounded-full border border-white/20 text-[#D7E2EA] font-sans font-light uppercase tracking-[0.2em] px-8 py-3 text-xs hover:bg-white hover:text-black transition-all duration-500 ease-out"
     >
       Live Project
-    </a>
+    
   );
 };
 
@@ -132,7 +132,7 @@ const HeroSection = () => {
         {["About", "Services", "Projects", "Contact"].map((item) => (
           <a key={item} href={`#${item.toLowerCase()}`} className="text-sm md:text-lg lg:text-[1.4rem] font-medium uppercase tracking-wider hover:opacity-70 transition-opacity duration-200">
             {item}
-          </a>
+          
         ))}
       </FadeIn>
 
@@ -164,20 +164,37 @@ const HeroSection = () => {
 };
 
 const AboutSection = () => {
+  const container = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["start 80%", "end 50%"]
+  });
+
+  const text = "I am a Computer Science graduate with over three years of hands-on experience managing enterprise IT operations. Most developers only know what happens on the screen. I know how the data actually travels through the building. Whether I am coding a Next.js frontend, configuring a Prisma database, or running underground conduit for a complex IP camera network, my focus is always the same: building systems that are fast, secure, and reliable.";
+  const words = text.split(" ");
+
   return (
-    <section id="about" className="relative min-h-screen flex flex-col justify-center items-center px-5 sm:px-8 md:px-10 py-32 md:py-48 overflow-hidden bg-transparent">
-      <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-16 z-10 w-full max-w-5xl mx-auto">
-        <FadeIn delay={0} y={40}>
-          <h2 className="hero-heading font-serif font-medium uppercase leading-none tracking-tight text-center text-[clamp(3rem,12vw,160px)]">
-            About me
-          </h2>
-        </FadeIn>
+    <section id="about" className="relative min-h-screen flex flex-col justify-center items-center px-5 sm:px-8 md:px-10 py-32 md:py-48 bg-transparent" ref={container}>
+      <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-24 w-full max-w-7xl mx-auto border-t border-white/10 pt-16">
+        <h2 className="hero-heading font-serif font-medium uppercase leading-none tracking-tighter text-[clamp(4rem,14vw,200px)] text-white w-full text-left">
+          About
+        </h2>
         
-        <FadeIn delay={0.2} y={30}>
-          <p className="text-white/80 font-sans font-light leading-loose text-[clamp(1.1rem,2vw,1.4rem)] text-center max-w-4xl mx-auto">
-            I am a Computer Science graduate with over three years of hands-on experience managing enterprise IT operations. Most developers only know what happens on the screen. I know how the data actually travels through the building. Whether I am coding a Next.js frontend, configuring a Prisma database, or running underground conduit for a complex IP camera network, my focus is always the same: building systems that are fast, secure, and reliable.
+        <div className="w-full">
+          <p className="font-sans font-medium leading-[1.1] text-[clamp(1.5rem,4vw,3.5rem)] max-w-6xl text-white flex flex-wrap gap-x-[1vw] gap-y-[0.5vw]">
+            {words.map((word, i) => {
+              const start = i / words.length;
+              const end = start + (1 / words.length);
+              // eslint-disable-next-line react-hooks/rules-of-hooks
+              const opacity = useTransform(scrollYProgress, [start, end], [0.1, 1]);
+              return (
+                <motion.span key={i} style={{ opacity }}>
+                  {word}
+                </motion.span>
+              );
+            })}
           </p>
-        </FadeIn>
+        </div>
 
         {/* Tech Stack Grid */}
         <FadeIn delay={0.4} y={30} className="w-full mt-12 sm:mt-16">
@@ -252,59 +269,57 @@ const ServicesSection = () => {
         ))}
       </div>
     </section>
+
   );
 };
 
 const ProjectCard = ({ proj, index }: any) => {
   return (
-    <div 
-      className="sticky w-full will-change-transform"
-      style={{ top: `calc(10vh + ${index * 20}px)` }}
-    >
-      <div className="w-full flex flex-col gap-8 sm:gap-12 bg-[#050505] border border-white/10 rounded-[40px] sm:rounded-[50px] md:rounded-[60px] p-6 sm:p-10 md:p-14 shadow-[0_-20px_40px_rgba(0,0,0,0.5)]">
-        
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
-          <div className="flex items-center gap-6 sm:gap-10">
-            <span className="font-serif font-light text-[#D7E2EA] text-[clamp(3rem,10vw,140px)] leading-none">{proj.id}</span>
-            <div className="flex flex-col gap-1">
-              <span className="uppercase text-[#D7E2EA] opacity-60 text-sm tracking-wider">{proj.label}</span>
-              <h3 className="uppercase text-[#D7E2EA] font-medium text-xl sm:text-2xl md:text-3xl">{proj.name}</h3>
-            </div>
-          </div>
-          
-          {proj.liveUrl !== "#" ? (
-            <LiveProjectButton href={proj.liveUrl} />
-          ) : (
-            <span className="inline-block rounded-full border border-white/10 text-white/40 font-sans font-light uppercase tracking-[0.2em] px-8 py-3 text-xs bg-white/5">
-              Internal Project
-            </span>
-          )}
-        </div>
-        
-        <div className="flex flex-col md:flex-row gap-4 sm:gap-6 w-full">
-          {/* Left Col */}
-          <div className="w-full md:w-[40%] flex flex-col gap-4 sm:gap-6 shrink-0">
-            <div className="w-full h-[clamp(130px,16vw,230px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-y-auto hide-scrollbar bg-neutral-900 border border-white/5">
-              <img src={proj.col1[0]} alt={`${proj.name} screenshot 1`} className="w-full h-auto block opacity-80 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700 ease-in-out" loading="lazy" />
-            </div>
-            <div className="w-full h-[clamp(160px,22vw,340px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-y-auto hide-scrollbar bg-neutral-900 border border-white/5">
-              <img src={proj.col1[1]} alt={`${proj.name} screenshot 2`} className="w-full h-auto block opacity-80 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700 ease-in-out" loading="lazy" />
-            </div>
-          </div>
-          {/* Right Col */}
-          <div className="w-full md:w-[60%] h-[400px] md:h-auto relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden">
-            <div className="absolute inset-0 overflow-y-auto hide-scrollbar bg-neutral-900 border border-white/5 rounded-[40px] sm:rounded-[50px] md:rounded-[60px]">
-              <img src={proj.col2} alt={`${proj.name} dashboard`} className="w-full h-auto block opacity-80 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700 ease-in-out" loading="lazy" />
-            </div>
+    <div className="w-[90vw] md:w-[75vw] h-[80vh] shrink-0 flex flex-col gap-6 bg-[#050505] border border-white/10 rounded-[30px] p-6 md:p-10 shadow-2xl relative overflow-hidden group">
+      
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 relative z-10 shrink-0">
+        <div className="flex items-center gap-6">
+          <span className="font-serif font-light text-[#D7E2EA] text-[clamp(2.5rem,6vw,80px)] leading-none">{proj.id}</span>
+          <div className="flex flex-col">
+            <span className="uppercase text-[#D7E2EA] opacity-60 text-xs tracking-widest">{proj.label}</span>
+            <h3 className="uppercase text-[#D7E2EA] font-medium text-xl md:text-2xl">{proj.name}</h3>
           </div>
         </div>
-
+        
+        {proj.liveUrl !== "#" ? (
+          <LiveProjectButton href={proj.liveUrl} />
+        ) : (
+          <span className="inline-block rounded-full border border-white/10 text-white/40 font-sans font-light uppercase tracking-[0.2em] px-6 py-2 text-[10px] bg-white/5">
+            Internal Project
+          </span>
+        )}
+      </div>
+      
+      <div className="flex flex-col md:flex-row gap-4 w-full h-full overflow-hidden">
+        <div className="w-full md:w-[40%] flex flex-col gap-4 shrink-0 h-full">
+          <div className="flex-1 relative rounded-2xl overflow-y-auto hide-scrollbar bg-neutral-900 border border-white/5">
+            <img src={proj.col1[0]} alt={`${proj.name} 1`} className="w-full h-auto block opacity-80 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" loading="lazy" />
+          </div>
+          <div className="flex-1 relative rounded-2xl overflow-y-auto hide-scrollbar bg-neutral-900 border border-white/5">
+            <img src={proj.col1[1]} alt={`${proj.name} 2`} className="w-full h-auto block opacity-80 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" loading="lazy" />
+          </div>
+        </div>
+        <div className="w-full md:w-[60%] relative rounded-2xl overflow-hidden h-full">
+          <div className="absolute inset-0 overflow-y-auto hide-scrollbar bg-neutral-900 border border-white/5 rounded-2xl">
+            <img src={proj.col2} alt={`${proj.name} dashboard`} className="w-full h-auto block opacity-80 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" loading="lazy" />
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
 const ProjectsSection = () => {
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: targetRef });
+  
+  const x = useTransform(scrollYProgress, [0, 1], ["5%", "-85%"]);
+
   const projects = [
     {
       id: "01",
@@ -366,26 +381,24 @@ const ProjectsSection = () => {
 
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
-    target: containerRef,
+    target: targetRef,
     offset: ["start start", "end end"]
   });
+  
+  const x = useTransform(scrollYProgress, [0, 1], ["5%", "-85%"]);
 
   return (
-    <section id="projects" className="bg-transparent rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 relative z-30 pt-32 sm:pt-40 md:pt-48 pb-48">
-      <h2 className="hero-heading font-serif font-medium uppercase text-center text-[clamp(3rem,12vw,160px)] mb-16 sm:mb-20 leading-none">
-        Projects
-      </h2>
-      
-      <div ref={containerRef} className="px-5 sm:px-8 md:px-10 max-w-7xl mx-auto flex flex-col gap-8 relative pb-20">
-        {projects.map((proj, i) => (
-          <ProjectCard 
-            key={proj.id} 
-            proj={proj} 
-            index={i} 
-            totalProjects={projects.length} 
-            scrollYProgress={scrollYProgress} 
-          />
-        ))}
+    <section id="projects" ref={targetRef} className="relative z-30 h-[500vh] bg-transparent border-t border-white/10">
+      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
+        <h2 className="absolute top-10 sm:top-20 left-5 sm:left-10 hero-heading font-serif font-medium uppercase tracking-tighter text-[clamp(2rem,5vw,80px)] text-white z-50 mix-blend-difference pointer-events-none">
+          Selected Works
+        </h2>
+        
+        <motion.div style={{ x }} className="flex gap-10 md:gap-20 items-center pl-[5vw] sm:pl-[10vw] pt-20">
+          {projects.map((proj, i) => (
+            <ProjectCard key={proj.id} proj={proj} index={i} />
+          ))}
+        </motion.div>
       </div>
     </section>
   );
@@ -406,14 +419,14 @@ const ContactSection = () => {
           <div className="flex flex-col gap-4 text-[#D7E2EA]">
             <a href="mailto:tsegashu@gmail.com" className="text-xl sm:text-2xl font-medium hover:text-white transition-colors flex items-center gap-3">
               tsegashu@gmail.com
-            </a>
+            
             <a href="tel:+251947626212" className="text-xl sm:text-2xl font-medium hover:text-white transition-colors flex items-center gap-3">
               +251 947 626 212
-            </a>
+            
             <div className="flex gap-6 mt-4">
               <a href="https://github.com/Tse12ga" target="_blank" rel="noopener noreferrer" className="text-sm font-medium uppercase tracking-widest hover:text-white transition-colors border-b border-[#D7E2EA]/30 pb-1">
                 GitHub
-              </a>
+              
             </div>
           </div>
         </div>
