@@ -156,121 +156,29 @@ const HeroSection = () => {
         </FadeIn>
       </div>
 
-      {/* Portrait (Magnet) */}
-      <FadeIn delay={0.6} y={30} className="absolute left-1/2 -translate-x-1/2 z-10 w-[240px] sm:w-[280px] md:w-[320px] lg:w-[380px] top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-[10%] pointer-events-auto">
-        <Magnet className="w-full h-full flex justify-center items-end" padding={150} strength={3}>
-          <img 
-            src="/Tsega.jfif" 
-            alt="Tsegaye Portrait"
-            className="w-full h-auto object-cover rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] select-none border border-white/10"
-            draggable="false"
-          />
-        </Magnet>
-      </FadeIn>
-    </section>
-  );
-};
-
-const MarqueeSection = () => {
-  const images = [
-    "https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif",
-    "https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif",
-    "https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif",
-    "https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif",
-    "https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif",
-    "https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif",
-    "https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif",
-    "https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif",
-    "https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif",
-    "https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif",
-    "https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif",
-    "https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif",
-    "https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif",
-    "https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif",
-    "https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif",
-    "https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif",
-    "https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif",
-    "https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif",
-    "https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif",
-    "https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif",
-    "https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif"
-  ];
-
-  const row1 = [...images.slice(0, 11), ...images.slice(0, 11), ...images.slice(0, 11)];
-  const row2 = [...images.slice(11), ...images.slice(11), ...images.slice(11)];
-
-  const { scrollY } = useScroll();
-  const [offset, setOffset] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // Very basic calculation matching the prompt's request
-      // Ideally we'd measure the section's actual top offset
-      const sectionTop = window.innerHeight; // assuming it mounts below hero
-      const val = (window.scrollY - sectionTop + window.innerHeight) * 0.3;
-      setOffset(val);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  return (
-    <section className="bg-[#0C0C0C] pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden flex flex-col gap-3">
-      {/* Row 1 -> Moves Right */}
-      <div 
-        className="flex gap-3 w-max"
-        style={{ transform: `translateX(${offset - 200}px)`, willChange: "transform" }}
-      >
-        {row1.map((src, i) => (
-          <img key={`r1-${i}`} src={src} loading="lazy" className="w-[420px] h-[270px] rounded-2xl object-cover shrink-0" alt="Marquee gif" />
-        ))}
-      </div>
-      
-      {/* Row 2 -> Moves Left */}
-      <div 
-        className="flex gap-3 w-max"
-        style={{ transform: `translateX(${-(offset - 200)}px)`, willChange: "transform" }}
-      >
-        {row2.map((src, i) => (
-          <img key={`r2-${i}`} src={src} loading="lazy" className="w-[420px] h-[270px] rounded-2xl object-cover shrink-0" alt="Marquee gif" />
-        ))}
-      </div>
     </section>
   );
 };
 
 const AboutSection = () => {
   return (
-    <section id="about" className="relative min-h-screen flex flex-col justify-center items-center px-5 sm:px-8 md:px-10 py-20 overflow-hidden">
-      {/* Decorative Corners */}
-      <FadeIn delay={0.1} x={-80} y={0} duration={0.9} className="absolute top-[4%] left-[1%] sm:left-[2%] md:left-[4%] w-[120px] sm:w-[160px] md:w-[210px]">
-        <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png" alt="Moon" className="w-full h-auto" />
-      </FadeIn>
-      <FadeIn delay={0.25} x={-80} y={0} duration={0.9} className="absolute bottom-[8%] left-[3%] sm:left-[6%] md:left-[10%] w-[100px] sm:w-[140px] md:w-[180px]">
-        <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png" alt="3D Object" className="w-full h-auto" />
-      </FadeIn>
-      <FadeIn delay={0.15} x={80} y={0} duration={0.9} className="absolute top-[4%] right-[1%] sm:right-[2%] md:right-[4%] w-[120px] sm:w-[160px] md:w-[210px]">
-        <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png" alt="Lego" className="w-full h-auto" />
-      </FadeIn>
-      <FadeIn delay={0.3} x={80} y={0} duration={0.9} className="absolute bottom-[8%] right-[3%] sm:right-[6%] md:right-[10%] w-[130px] sm:w-[170px] md:w-[220px]">
-        <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png" alt="Group" className="w-full h-auto" />
-      </FadeIn>
-
-      <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-16 z-10 w-full">
+    <section id="about" className="relative min-h-screen flex flex-col justify-center items-center px-5 sm:px-8 md:px-10 py-20 overflow-hidden bg-[#0C0C0C]">
+      <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-16 z-10 w-full max-w-4xl mx-auto">
         <FadeIn delay={0} y={40}>
           <h2 className="hero-heading font-black uppercase leading-none tracking-tight text-center text-[clamp(3rem,12vw,160px)]">
             About me
           </h2>
         </FadeIn>
         
-        <AnimatedText 
-          text="I am a Computer Science graduate with over three years of hands-on experience managing enterprise IT operations. Most developers only know what happens on the screen. I know how the data actually travels through the building. Whether I am coding a Next.js frontend, configuring a Prisma database, or running underground conduit for a complex IP camera network, my focus is always the same: building systems that are fast, secure, and reliable." 
-          className="text-[#D7E2EA] font-medium leading-relaxed max-w-[700px] text-[clamp(1rem,1.8vw,1.35rem)] text-center" 
-        />
+        <FadeIn delay={0.2} y={30}>
+          <p className="text-[#F2F5F8] font-medium leading-relaxed text-[clamp(1.1rem,2vw,1.5rem)] text-center">
+            I am a Computer Science graduate with over three years of hands-on experience managing enterprise IT operations. Most developers only know what happens on the screen. I know how the data actually travels through the building. Whether I am coding a Next.js frontend, configuring a Prisma database, or running underground conduit for a complex IP camera network, my focus is always the same: building systems that are fast, secure, and reliable.
+          </p>
+        </FadeIn>
         
-        <div className="mt-6 sm:mt-6 md:mt-8">
+        <FadeIn delay={0.4} y={30} className="mt-6 sm:mt-6 md:mt-8">
           <ContactButton />
-        </div>
+        </FadeIn>
       </div>
     </section>
   );
@@ -402,16 +310,16 @@ const ProjectsSection = () => {
               <div className="flex flex-col md:flex-row gap-4 sm:gap-6 w-full">
                 {/* Left Col */}
                 <div className="w-full md:w-[40%] flex flex-col gap-4 sm:gap-6">
-                  <div className="w-full h-[clamp(130px,16vw,230px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-neutral-900">
-                    <img src={proj.col1[0]} alt="" className="absolute inset-0 w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" />
+                  <div className="w-full h-[clamp(130px,16vw,230px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-neutral-900 border border-white/5 flex items-center justify-center p-6 text-center">
+                    <span className="text-white/20 font-medium uppercase tracking-[0.2em] text-xs">Live Interface Screenshot</span>
                   </div>
-                  <div className="w-full h-[clamp(160px,22vw,340px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-neutral-900">
-                    <img src={proj.col1[1]} alt="" className="absolute inset-0 w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" />
+                  <div className="w-full h-[clamp(160px,22vw,340px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-neutral-900 border border-white/5 flex items-center justify-center p-6 text-center">
+                    <span className="text-white/20 font-medium uppercase tracking-[0.2em] text-xs">Mobile View Preview</span>
                   </div>
                 </div>
                 {/* Right Col */}
-                <div className="w-full md:w-[60%] h-[400px] md:h-auto relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-neutral-900">
-                  <img src={proj.col2} alt="" className="absolute inset-0 w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" />
+                <div className="w-full md:w-[60%] h-[400px] md:h-auto relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-neutral-900 border border-white/5 flex items-center justify-center p-6 text-center">
+                  <span className="text-white/20 font-medium uppercase tracking-[0.2em] text-sm">Main Dashboard Preview</span>
                 </div>
               </div>
             </motion.div>
