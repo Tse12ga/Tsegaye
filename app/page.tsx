@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, useSpring } from "motion/react";
+import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
 import Image from "next/image";
+import RevealText from "@/components/RevealText";
 
 // ==========================================
 // REUSABLE COMPONENTS
@@ -138,11 +139,11 @@ const HeroSection = () => {
       {/* Hero Heading */}
       <div className="flex-1 flex flex-col justify-center items-center w-full relative z-20 px-4">
         <div className="overflow-hidden w-full text-center mt-6 sm:mt-4 md:-mt-5">
-          <FadeIn delay={0.15} y={40} className="w-full">
-            <h1 className="hero-heading font-serif font-medium uppercase tracking-tight leading-none whitespace-nowrap w-full text-[clamp(2.5rem,10.5vw,180px)]">
-              Hi, I&apos;m Tsegaye
-            </h1>
-          </FadeIn>
+          <RevealText 
+            text="HI, I'M TSEGAYE" 
+            className="hero-heading font-serif font-medium uppercase tracking-tight leading-none w-full text-[clamp(2.5rem,10.5vw,180px)]" 
+            delay={0.15} 
+          />
         </div>
       </div>
 

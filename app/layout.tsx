@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import FiberBackground from "@/components/FiberBackground";
+import CustomCursor from "@/components/CustomCursor";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,7 +27,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-[#030303] text-[#D7E2EA] selection:bg-white selection:text-black`}>
+      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-[#030303] text-[#D7E2EA] selection:bg-white selection:text-black md:cursor-none`}>
+        <CustomCursor />
         <FiberBackground />
         <SmoothScroll>
           <div className="relative z-10">
