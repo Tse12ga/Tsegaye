@@ -256,17 +256,19 @@ const ProjectCard = ({ proj, index, totalProjects, scrollYProgress }: any) => {
       
       <div className="flex flex-col md:flex-row gap-4 sm:gap-6 w-full">
         {/* Left Col */}
-        <div className="w-full md:w-[40%] flex flex-col gap-4 sm:gap-6">
-          <div className="w-full h-[clamp(130px,16vw,230px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-neutral-900 border border-white/5">
-            <img src={proj.col1[0]} alt={`${proj.name} screenshot 1`} className="absolute inset-0 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" loading="lazy" />
+        <div className="w-full md:w-[40%] flex flex-col gap-4 sm:gap-6 shrink-0">
+          <div className="w-full h-[clamp(130px,16vw,230px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-y-auto hide-scrollbar bg-neutral-900 border border-white/5">
+            <img src={proj.col1[0]} alt={`${proj.name} screenshot 1`} className="w-full h-auto block opacity-90 hover:opacity-100 transition-opacity" loading="lazy" />
           </div>
-          <div className="w-full h-[clamp(160px,22vw,340px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-neutral-900 border border-white/5">
-            <img src={proj.col1[1]} alt={`${proj.name} screenshot 2`} className="absolute inset-0 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" loading="lazy" />
+          <div className="w-full h-[clamp(160px,22vw,340px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-y-auto hide-scrollbar bg-neutral-900 border border-white/5">
+            <img src={proj.col1[1]} alt={`${proj.name} screenshot 2`} className="w-full h-auto block opacity-90 hover:opacity-100 transition-opacity" loading="lazy" />
           </div>
         </div>
         {/* Right Col */}
-        <div className="w-full md:w-[60%] h-[400px] md:h-auto relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-neutral-900 border border-white/5">
-          <img src={proj.col2} alt={`${proj.name} dashboard`} className="absolute inset-0 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" loading="lazy" />
+        <div className="w-full md:w-[60%] h-[400px] md:h-auto relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden">
+          <div className="absolute inset-0 overflow-y-auto hide-scrollbar bg-neutral-900 border border-white/5 rounded-[40px] sm:rounded-[50px] md:rounded-[60px]">
+            <img src={proj.col2} alt={`${proj.name} dashboard`} className="w-full h-auto block opacity-90 hover:opacity-100 transition-opacity" loading="lazy" />
+          </div>
         </div>
       </div>
     </motion.div>
