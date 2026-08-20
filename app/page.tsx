@@ -415,18 +415,18 @@ const ContactSection = () => {
         
         {/* Contact Form */}
         <div className="w-full lg:w-1/2 bg-neutral-900/50 p-6 sm:p-8 md:p-10 rounded-[30px] border border-white/10">
-          <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
+          <form className="flex flex-col gap-6" action="https://formspree.io/f/mljrakzb" method="POST">
             <div className="flex flex-col gap-2">
               <label htmlFor="name" className="text-[#D7E2EA] text-sm font-medium uppercase tracking-wider">Your Name</label>
-              <input type="text" id="name" placeholder="John Doe" className="bg-[#0C0C0C] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-white/30 transition-colors" />
+              <input type="text" id="name" name="name" required placeholder="John Doe" className="bg-[#0C0C0C] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-white/30 transition-colors" />
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="email" className="text-[#D7E2EA] text-sm font-medium uppercase tracking-wider">Email Address</label>
-              <input type="email" id="email" placeholder="john@example.com" className="bg-[#0C0C0C] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-white/30 transition-colors" />
+              <input type="email" id="email" name="email" required placeholder="john@example.com" className="bg-[#0C0C0C] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-white/30 transition-colors" />
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="message" className="text-[#D7E2EA] text-sm font-medium uppercase tracking-wider">Project Details</label>
-              <textarea id="message" rows={4} placeholder="Tell me about your project..." className="bg-[#0C0C0C] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-white/30 transition-colors resize-none"></textarea>
+              <textarea id="message" name="message" required rows={4} placeholder="Tell me about your project..." className="bg-[#0C0C0C] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-white/30 transition-colors resize-none"></textarea>
             </div>
             <button type="submit" className="mt-2 rounded-xl bg-[#D7E2EA] text-[#0C0C0C] font-black uppercase tracking-widest py-4 hover:bg-white transition-colors shadow-[0_0_20px_rgba(215,226,234,0.3)]">
               Send Message
