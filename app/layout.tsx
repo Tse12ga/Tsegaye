@@ -4,6 +4,7 @@ import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import FiberBackground from "@/components/FiberBackground";
 import CustomCursor from "@/components/CustomCursor";
+import SoundToggle from "@/components/SoundToggle";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-[#030303] text-[#D7E2EA] selection:bg-white selection:text-black md:cursor-none`}>
+        <SoundToggle />
         <CustomCursor />
         <FiberBackground />
         <SmoothScroll>

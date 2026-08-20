@@ -1,10 +1,12 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
+import { audioEngine } from "@/utils/audioEngine";
 
 export default function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const hoverStateRef = useRef(false);
 
   useEffect(() => {
     // Only run on desktop/devices with a pointer
@@ -22,18 +24,29 @@ export default function CustomCursor() {
         target.closest("a") ||
         target.closest("button")
       ) {
-        setIsHovering(true);
+        if (!hoverStateRef.current) {
+          setIsHovering(true);
+          hoverStateRef.current = true;
+          audioEngine?.playHover();
+        }
       } else {
         setIsHovering(false);
+        hoverStateRef.current = false;
       }
+    };
+    
+    const handleMouseDown = () => {
+      audioEngine?.playClick();
     };
 
     window.addEventListener("mousemove", updateMousePosition);
     window.addEventListener("mouseover", handleMouseOver);
+    window.addEventListener("mousedown", handleMouseDown);
 
     return () => {
       window.removeEventListener("mousemove", updateMousePosition);
       window.removeEventListener("mouseover", handleMouseOver);
+      window.removeEventListener("mousedown", handleMouseDown);
     };
   }, []);
 
