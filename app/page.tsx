@@ -157,12 +157,12 @@ const HeroSection = () => {
       </div>
 
       {/* Portrait (Magnet) */}
-      <FadeIn delay={0.6} y={30} className="absolute left-1/2 -translate-x-1/2 z-10 w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px] top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0 pointer-events-auto">
+      <FadeIn delay={0.6} y={30} className="absolute left-1/2 -translate-x-1/2 z-10 w-[240px] sm:w-[280px] md:w-[320px] lg:w-[380px] top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-[10%] pointer-events-auto">
         <Magnet className="w-full h-full flex justify-center items-end" padding={150} strength={3}>
           <img 
-            src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png" 
+            src="/Tsega.jfif" 
             alt="Tsegaye Portrait"
-            className="w-full h-auto object-contain select-none opacity-80"
+            className="w-full h-auto object-cover rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] select-none border border-white/10"
             draggable="false"
           />
         </Magnet>
