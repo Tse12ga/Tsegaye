@@ -70,11 +70,7 @@ const ContactButton = ({ href = "#contact", className = "" }: { href?: string; c
   return (
     <a
       href={href}
-      className={`inline-block rounded-full px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base text-white font-medium uppercase tracking-widest outline outline-2 outline-offset-[-3px] outline-white hover:scale-105 transition-transform ${className}`}
-      style={{
-        background: "linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%)",
-        boxShadow: "0px 4px 4px rgba(181, 1, 167, 0.25), inset 4px 4px 12px #7721B1",
-      }}
+      className={`inline-block rounded-full px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base text-white font-medium uppercase tracking-widest border border-white/20 hover:bg-white hover:text-black transition-colors ${className}`}
     >
       Contact Me
     </a>
@@ -143,7 +139,7 @@ const HeroSection = () => {
       <div className="flex-1 flex flex-col justify-center items-center w-full relative z-20">
         <div className="overflow-hidden w-full text-center mt-6 sm:mt-4 md:-mt-5">
           <FadeIn delay={0.15} y={40} className="w-full">
-            <h1 className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-[12vw] sm:text-[13vw] md:text-[14vw] lg:text-[15.5vw]">
+            <h1 className="hero-heading font-serif font-medium uppercase tracking-tight leading-none whitespace-nowrap w-full text-[12vw] sm:text-[13vw] md:text-[14vw] lg:text-[15.5vw]">
               Hi, i&apos;m Tsegaye
             </h1>
           </FadeIn>
@@ -168,10 +164,10 @@ const HeroSection = () => {
 
 const AboutSection = () => {
   return (
-    <section id="about" className="relative min-h-screen flex flex-col justify-center items-center px-5 sm:px-8 md:px-10 py-20 overflow-hidden bg-[#0C0C0C]">
+    <section id="about" className="relative min-h-screen flex flex-col justify-center items-center px-5 sm:px-8 md:px-10 py-32 md:py-48 overflow-hidden bg-[#0C0C0C]">
       <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-16 z-10 w-full max-w-5xl mx-auto">
         <FadeIn delay={0} y={40}>
-          <h2 className="hero-heading font-black uppercase leading-none tracking-tight text-center text-[clamp(3rem,12vw,160px)]">
+          <h2 className="hero-heading font-serif font-medium uppercase leading-none tracking-tight text-center text-[clamp(3rem,12vw,160px)]">
             About me
           </h2>
         </FadeIn>
@@ -187,7 +183,7 @@ const AboutSection = () => {
           <div className="flex flex-col md:flex-row gap-6 md:gap-10 w-full">
             {/* Software */}
             <div className="flex-1 bg-neutral-900/50 border border-white/10 rounded-[30px] p-8 sm:p-10 flex flex-col gap-6">
-              <h3 className="text-[#D7E2EA] font-black uppercase tracking-widest border-b border-white/10 pb-4">Web Engineering</h3>
+              <h3 className="text-[#D7E2EA] font-serif font-light uppercase tracking-widest border-b border-white/10 pb-4">Web Engineering</h3>
               <div className="flex flex-wrap gap-3">
                 {["Next.js", "React", "TypeScript", "Tailwind CSS", "Prisma", "Node.js", "PostgreSQL", "Framer Motion"].map(tech => (
                   <span key={tech} className="px-4 py-2 border border-white/20 rounded-full text-sm font-medium text-white/80">{tech}</span>
@@ -196,7 +192,7 @@ const AboutSection = () => {
             </div>
             {/* Hardware */}
             <div className="flex-1 bg-neutral-900/50 border border-white/10 rounded-[30px] p-8 sm:p-10 flex flex-col gap-6">
-              <h3 className="text-[#D7E2EA] font-black uppercase tracking-widest border-b border-white/10 pb-4">Infrastructure & Security</h3>
+              <h3 className="text-[#D7E2EA] font-serif font-light uppercase tracking-widest border-b border-white/10 pb-4">Infrastructure & Security</h3>
               <div className="flex flex-wrap gap-3">
                 {["CCTV IP/Analog", "NVR/DVR Systems", "PoE Switches", "Cat6 Structured Cabling", "Local Area Networks", "Windows Server", "Hardware Diagnostics"].map(tech => (
                   <span key={tech} className="px-4 py-2 border border-white/20 rounded-full text-sm font-medium text-white/80">{tech}</span>
@@ -224,15 +220,15 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="bg-white rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 relative z-20">
-      <h2 className="text-[#0C0C0C] font-black uppercase text-center text-[clamp(3rem,12vw,160px)] mb-16 sm:mb-20 md:mb-28 leading-none">
+    <section id="services" className="bg-white rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 py-32 sm:py-40 md:py-48 relative z-20">
+      <h2 className="text-[#0C0C0C] font-serif font-light uppercase text-center text-[clamp(3rem,12vw,160px)] mb-16 sm:mb-20 md:mb-28 leading-none">
         Services
       </h2>
       
       <div className="max-w-5xl mx-auto flex flex-col">
         {services.map((srv, i) => (
           <FadeIn key={srv.num} delay={i * 0.1} className="flex flex-col md:flex-row items-start md:items-center py-8 sm:py-10 md:py-12 border-b border-[rgba(12,12,12,0.15)] last:border-0 gap-6 md:gap-12">
-            <span className="font-black text-[#0C0C0C] text-[clamp(3rem,10vw,140px)] leading-none">
+            <span className="font-serif font-light text-[#0C0C0C] text-[clamp(3rem,10vw,140px)] leading-none">
               {srv.num}
             </span>
             <div className="flex flex-col gap-2">
@@ -265,7 +261,7 @@ const ProjectCard = ({ proj, index, totalProjects, scrollYProgress }: any) => {
     >
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
         <div className="flex items-center gap-6 sm:gap-10">
-          <span className="font-black text-[#D7E2EA] text-[clamp(3rem,10vw,140px)] leading-none">{proj.id}</span>
+          <span className="font-serif font-light text-[#D7E2EA] text-[clamp(3rem,10vw,140px)] leading-none">{proj.id}</span>
           <div className="flex flex-col gap-1">
             <span className="uppercase text-[#D7E2EA] opacity-60 text-sm tracking-wider">{proj.label}</span>
             <h3 className="uppercase text-[#D7E2EA] font-medium text-xl sm:text-2xl md:text-3xl">{proj.name}</h3>
@@ -282,16 +278,16 @@ const ProjectCard = ({ proj, index, totalProjects, scrollYProgress }: any) => {
         {/* Left Col */}
         <div className="w-full md:w-[40%] flex flex-col gap-4 sm:gap-6 shrink-0">
           <div className="w-full h-[clamp(130px,16vw,230px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-y-auto hide-scrollbar bg-neutral-900 border border-white/5">
-            <img src={proj.col1[0]} alt={`${proj.name} screenshot 1`} className="w-full h-auto block opacity-90 hover:opacity-100 transition-opacity" loading="lazy" />
+            <img src={proj.col1[0]} alt={`${proj.name} screenshot 1`} className="w-full h-auto block opacity-80 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700 ease-in-out" loading="lazy" />
           </div>
           <div className="w-full h-[clamp(160px,22vw,340px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-y-auto hide-scrollbar bg-neutral-900 border border-white/5">
-            <img src={proj.col1[1]} alt={`${proj.name} screenshot 2`} className="w-full h-auto block opacity-90 hover:opacity-100 transition-opacity" loading="lazy" />
+            <img src={proj.col1[1]} alt={`${proj.name} screenshot 2`} className="w-full h-auto block opacity-80 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700 ease-in-out" loading="lazy" />
           </div>
         </div>
         {/* Right Col */}
         <div className="w-full md:w-[60%] h-[400px] md:h-auto relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden">
           <div className="absolute inset-0 overflow-y-auto hide-scrollbar bg-neutral-900 border border-white/5 rounded-[40px] sm:rounded-[50px] md:rounded-[60px]">
-            <img src={proj.col2} alt={`${proj.name} dashboard`} className="w-full h-auto block opacity-90 hover:opacity-100 transition-opacity" loading="lazy" />
+            <img src={proj.col2} alt={`${proj.name} dashboard`} className="w-full h-auto block opacity-80 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700 ease-in-out" loading="lazy" />
           </div>
         </div>
       </div>
@@ -366,8 +362,8 @@ const ProjectsSection = () => {
   });
 
   return (
-    <section id="projects" className="bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 relative z-30 pt-20 sm:pt-24 md:pt-32 pb-32">
-      <h2 className="hero-heading font-black uppercase text-center text-[clamp(3rem,12vw,160px)] mb-16 sm:mb-20 leading-none">
+    <section id="projects" className="bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 relative z-30 pt-32 sm:pt-40 md:pt-48 pb-48">
+      <h2 className="hero-heading font-serif font-medium uppercase text-center text-[clamp(3rem,12vw,160px)] mb-16 sm:mb-20 leading-none">
         Projects
       </h2>
       
@@ -388,10 +384,10 @@ const ProjectsSection = () => {
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="bg-[#0C0C0C] pt-20 pb-10 px-5 sm:px-8 md:px-10 relative z-40 border-t border-white/10">
+    <section id="contact" className="bg-[#0C0C0C] pt-32 pb-16 px-5 sm:px-8 md:px-10 relative z-40 border-t border-white/10">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-start gap-16">
         <div className="flex flex-col gap-6 lg:w-1/2">
-          <h2 className="hero-heading font-black uppercase tracking-tight text-[clamp(2.5rem,8vw,80px)] leading-none">
+          <h2 className="hero-heading font-serif font-medium uppercase tracking-tight text-[clamp(2.5rem,8vw,80px)] leading-none">
             Let&apos;s Build
           </h2>
           <p className="text-[#F2F5F8] font-medium text-lg max-w-md opacity-80 mb-4">
@@ -428,7 +424,7 @@ const ContactSection = () => {
               <label htmlFor="message" className="text-[#D7E2EA] text-sm font-medium uppercase tracking-wider">Project Details</label>
               <textarea id="message" name="message" required rows={4} placeholder="Tell me about your project..." className="bg-[#0C0C0C] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-white/30 transition-colors resize-none"></textarea>
             </div>
-            <button type="submit" className="mt-2 rounded-xl bg-[#D7E2EA] text-[#0C0C0C] font-black uppercase tracking-widest py-4 hover:bg-white transition-colors shadow-[0_0_20px_rgba(215,226,234,0.3)]">
+            <button type="submit" className="mt-2 rounded-xl bg-[#D7E2EA] text-[#0C0C0C] font-serif font-light uppercase tracking-widest py-4 hover:bg-white transition-colors shadow-[0_0_20px_rgba(215,226,234,0.3)]">
               Send Message
             </button>
           </form>
