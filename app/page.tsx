@@ -233,40 +233,56 @@ const ProjectsSection = () => {
       name: "Gollagul Trading",
       label: "E-Commerce",
       liveUrl: "https://gollagul.com",
-      col1: ["", ""],
-      col2: ""
+      col1: ["/Gollagul/Gollagul 1.jpeg", "/Gollagul/Gollagul 2.jpeg"],
+      col2: "/Gollagul/Gollagul 3.jpeg"
     },
     {
       id: "02",
       name: "Debredamo Hotel",
       label: "Hospitality",
       liveUrl: "https://debredamohotel.com",
-      col1: ["", ""],
-      col2: ""
+      col1: ["/Debredamo/DDH 1.jpeg", "/Debredamo/DDH 3.jpeg"],
+      col2: "/Debredamo/DDH 4.jpeg"
     },
     {
       id: "03",
       name: "Gullit",
       label: "E-commerce",
       liveUrl: "https://gullit.net",
-      col1: ["", ""],
-      col2: ""
+      col1: ["/Gullit/gullit 1.jpeg", "/Gullit/Gullit 2.jpeg"],
+      col2: "/Gullit/Gullit 3.jpeg"
     },
     {
       id: "04",
       name: "Properties in Addis",
       label: "Real Estate",
       liveUrl: "https://propertiesinaddis.com",
-      col1: ["", ""],
-      col2: ""
+      col1: ["/Propertiesinaddis/PIA 1.jpeg", "/Propertiesinaddis/PIA 2.jpeg"],
+      col2: "/Propertiesinaddis/PIA 3.jpeg"
     },
     {
       id: "05",
       name: "Hexagon Systems",
       label: "Corporate",
       liveUrl: "https://hexagonview.com",
-      col1: ["", ""],
-      col2: ""
+      col1: ["/Hexagon Computer Systems/Hexagon 1.jpeg", "/Hexagon Computer Systems/Hexagon 2.jpeg"],
+      col2: "/Hexagon Computer Systems/Hexagon 3.jpeg"
+    },
+    {
+      id: "06",
+      name: "Amibara Security",
+      label: "Infrastructure",
+      liveUrl: "#",
+      col1: ["/Amibara/6024023500924241636.jpg", "/Amibara/IMG_20260328_223803_554.JPG"],
+      col2: "/Amibara/6048664174977992546.jpg"
+    },
+    {
+      id: "07",
+      name: "IT Operations",
+      label: "Enterprise IT",
+      liveUrl: "#",
+      col1: ["/IT Support/IMG_20260205_144326_780.jpg", "/IT Support/shared image (2).jpg"],
+      col2: "/IT Support/shared image (3).jpg"
     }
   ];
 
@@ -288,8 +304,6 @@ const ProjectsSection = () => {
           const targetScale = 1 - (projects.length - 1 - i) * 0.03;
           // When this card hits top of viewport, its progress goes from 0 to 1
           // We map its own scroll progress to scale down.
-          // For simplicity in React without making subcomponents, we'll map the global container scroll.
-          // Start scaling when container reaches (i / total) and ends at ((i+1) / total)
           const start = i / projects.length;
           const end = (i + 1) / projects.length;
           
@@ -310,22 +324,26 @@ const ProjectsSection = () => {
                     <h3 className="uppercase text-[#D7E2EA] font-medium text-xl sm:text-2xl md:text-3xl">{proj.name}</h3>
                   </div>
                 </div>
-                <LiveProjectButton href={proj.liveUrl} />
+                {proj.liveUrl !== "#" ? (
+                  <LiveProjectButton href={proj.liveUrl} />
+                ) : (
+                  <span className="px-8 py-3 text-sm font-medium uppercase tracking-widest text-[#D7E2EA]/50 border-2 border-[#D7E2EA]/20 rounded-full">Internal Project</span>
+                )}
               </div>
               
               <div className="flex flex-col md:flex-row gap-4 sm:gap-6 w-full">
                 {/* Left Col */}
                 <div className="w-full md:w-[40%] flex flex-col gap-4 sm:gap-6">
-                  <div className="w-full h-[clamp(130px,16vw,230px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-neutral-900 border border-white/5 flex items-center justify-center p-6 text-center">
-                    <span className="text-white/20 font-medium uppercase tracking-[0.2em] text-xs">Live Interface Screenshot</span>
+                  <div className="w-full h-[clamp(130px,16vw,230px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-neutral-900 border border-white/5">
+                    <img src={proj.col1[0]} alt={`${proj.name} screenshot 1`} className="absolute inset-0 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" loading="lazy" />
                   </div>
-                  <div className="w-full h-[clamp(160px,22vw,340px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-neutral-900 border border-white/5 flex items-center justify-center p-6 text-center">
-                    <span className="text-white/20 font-medium uppercase tracking-[0.2em] text-xs">Mobile View Preview</span>
+                  <div className="w-full h-[clamp(160px,22vw,340px)] relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-neutral-900 border border-white/5">
+                    <img src={proj.col1[1]} alt={`${proj.name} screenshot 2`} className="absolute inset-0 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" loading="lazy" />
                   </div>
                 </div>
                 {/* Right Col */}
-                <div className="w-full md:w-[60%] h-[400px] md:h-auto relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-neutral-900 border border-white/5 flex items-center justify-center p-6 text-center">
-                  <span className="text-white/20 font-medium uppercase tracking-[0.2em] text-sm">Main Dashboard Preview</span>
+                <div className="w-full md:w-[60%] h-[400px] md:h-auto relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-neutral-900 border border-white/5">
+                  <img src={proj.col2} alt={`${proj.name} dashboard`} className="absolute inset-0 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" loading="lazy" />
                 </div>
               </div>
             </motion.div>
