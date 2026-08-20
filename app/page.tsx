@@ -74,7 +74,7 @@ const ContactButton = ({ href = "#contact", className = "" }: { href?: string; c
       className={`inline-block rounded-full px-10 py-4 text-xs sm:text-sm text-white font-sans font-light uppercase tracking-[0.2em] border border-white/20 hover:bg-white hover:text-black transition-all duration-500 ease-out ${className}`}
     >
       Contact Me
-    
+    </a>
   );
 };
 
@@ -87,7 +87,7 @@ const LiveProjectButton = ({ href }: { href: string }) => {
       className="inline-block rounded-full border border-white/20 text-[#D7E2EA] font-sans font-light uppercase tracking-[0.2em] px-8 py-3 text-xs hover:bg-white hover:text-black transition-all duration-500 ease-out"
     >
       Live Project
-    
+    </a>
   );
 };
 
@@ -132,7 +132,7 @@ const HeroSection = () => {
         {["About", "Services", "Projects", "Contact"].map((item) => (
           <a key={item} href={`#${item.toLowerCase()}`} className="text-sm md:text-lg lg:text-[1.4rem] font-medium uppercase tracking-wider hover:opacity-70 transition-opacity duration-200">
             {item}
-          
+          </a>
         ))}
       </FadeIn>
 
@@ -419,14 +419,14 @@ const ContactSection = () => {
           <div className="flex flex-col gap-4 text-[#D7E2EA]">
             <a href="mailto:tsegashu@gmail.com" className="text-xl sm:text-2xl font-medium hover:text-white transition-colors flex items-center gap-3">
               tsegashu@gmail.com
-            
+            </a>
             <a href="tel:+251947626212" className="text-xl sm:text-2xl font-medium hover:text-white transition-colors flex items-center gap-3">
               +251 947 626 212
-            
+            </a>
             <div className="flex gap-6 mt-4">
               <a href="https://github.com/Tse12ga" target="_blank" rel="noopener noreferrer" className="text-sm font-medium uppercase tracking-widest hover:text-white transition-colors border-b border-[#D7E2EA]/30 pb-1">
                 GitHub
-              
+              </a>
             </div>
           </div>
         </div>
